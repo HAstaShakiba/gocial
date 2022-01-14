@@ -19,8 +19,8 @@ var (
 	ErrInvalidUsername = errors.New("invalid username")
 	// ErrEmailTaken used when there is already an user registered with that email.
 	ErrEmailTaken = errors.New("email taken")
-	// ErrUssernameTaken used when there is already an user registered with that username.
-	ErrUssernameTaken = errors.New("username taken")
+	// ErrUsernameTaken used when there is already an user registered with that username.
+	ErrUsernameTaken = errors.New("username taken")
 )
 
 // User model.
@@ -49,7 +49,7 @@ func (s *Service) CreateUser(ctx context.Context, email, username string) error 
 	}
 
 	if unique && strings.Contains(err.Error(), "username") {
-		return ErrUssernameTaken
+		return ErrUsernameTaken
 	}
 
 	if err != nil {
